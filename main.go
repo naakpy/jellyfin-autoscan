@@ -119,7 +119,7 @@ func startServer(baseURL, apiKey string) error {
 	http.HandleFunc("/refresh", func(w http.ResponseWriter, r *http.Request) {
 		log.WithField("remoteAddr", r.RemoteAddr).Info("Received refresh request")
 		
-		if r.Method != http.MethodGet {
+		if r.Method != http.MethodPost {
 			log.WithField("method", r.Method).Info("Method not allowed")
 			http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 			return
